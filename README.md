@@ -20,7 +20,23 @@ The result is that you cannot really make decisions about the little journey the
 
 It should be a designer responsibility to define which are the resources the browser should load first because they are meaningful in the first phase of the user interaction.
 
-With this little library the designer can precisely define the exact loading sequence, based on the user journey the designer is actually design.
+Leaving these choices to the browser means that every session will be different according to the network and servers conditions on that particular moment in time. 
+
+With this little library the designer can precisely define the exact loading sequence, based on the user journey that has been designed. Plus you can exploit callback for each ```loaded``` event to refine, in details, what should happen on screen based on the assets availability.
+
+This is a minimal code snippet to show how to control the pipeline:
+
+```
+var pipe = new CriticalPath()
+
+	.load('imaes/1.jpg')
+	.src('#myImage1')
+	.end(function(){
+		console.log('do something')
+	})
+
+	.start()
+``` 
 
 
 ## Examples
