@@ -28,7 +28,11 @@ Check the ```examples``` folder for working files.
 
 ## Install
 
-You can download the .zip of this repo and include the library in your html file.
+If you use Bower you can install with this line:
+
+	bower install CriticalPath
+
+You can also download the .zip of this repo and include the library in your html file.
 
 
 ## Documentation
