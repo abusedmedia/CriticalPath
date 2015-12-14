@@ -1,6 +1,6 @@
 {
   "name": "CriticalPath",
-  "description": "Precisely design the resources loading pipeline.",
+  "description": "Design precisely the resources loading pipeline",
   "version": "0.1.0",
   "main": "./CriticalPath.js",
   "ignore": [
