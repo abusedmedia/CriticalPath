@@ -15,7 +15,7 @@ var CriticalPath = function(){
 
 	var startItem = function(){
 		var p = resources[index];
-		
+
 		if(p.type == 'img'){
 			loadImg();
 		}
@@ -42,12 +42,14 @@ var CriticalPath = function(){
 		var img = new Image();
 		img.src = p;
 
+		console.log(p);
 		
 		img.onload = function(){
 			if(o.clb) o.clb(p);
 			if(o.selector){
 				if(o.src){
 					var arr = document.querySelectorAll(o.selector);
+					console.log(arr)
 					for(var i=0; i<arr.length; ++i){
 						arr[i].src = p;
 					}
@@ -60,6 +62,10 @@ var CriticalPath = function(){
 				}
 			}
 			checkQueue();
+		}
+
+		img.onerror = function(){
+			console.log('on error');
 		}
 	}
 
@@ -116,16 +122,23 @@ var CriticalPath = function(){
 
 	
 
-	this.load = function(path){
-		var extarr = path.split('.');
-		var ext = extarr[extarr.length-1];
+	this.load = function(path, type){
 
 		current = {path:path, clb:null, selector:null}
+		
+		if(!type){
+			var extarr = path.split('.');
+			var ext = extarr[extarr.length-1];
 
-		if(isImgs.indexOf(ext)>=0) current.type = 'img';
-		if(isScript.indexOf(ext)>=0) current.type = 'script';
-		if(isCss.indexOf(ext)>=0) current.css = true;
-		if(isDoc.indexOf(ext)>=0) current.doc = true;
+			if(isImgs.indexOf(ext)>=0) current.type = 'img';
+			if(isScript.indexOf(ext)>=0) current.type = 'script';
+			if(isCss.indexOf(ext)>=0) current.css = true;
+			if(isDoc.indexOf(ext)>=0) current.doc = true;
+		}else{
+			current.type = type;
+			current.css = (isCss.indexOf(type)>=0)
+			current.doc = (isDoc.indexOf(type)>=0)
+		}
 
 		resources.push(current);
 		return that;

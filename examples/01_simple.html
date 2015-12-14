@@ -1,0 +1,36 @@
+<html>
+
+	<head>
+		<script type="text/javascript" src="../CriticalPath.js"></script>
+	</head>
+
+	<body>
+
+		<img id="myImage1" />
+		<img id="myImage2" />
+		<img id="myImage3" />
+
+		<script type="text/javascript">
+			console.log('hey');
+
+			var pipe = new CriticalPath()
+
+				.load('http://lorempixel.com/400/400/sports', 'img')
+				.src('#myImage1')
+
+				.load('http://lorempixel.com/400/400/people', 'img')
+				.src('#myImage2')
+
+				.load('http://lorempixel.com/400/400/city', 'img')
+				.src('#myImage3')
+
+				.end(function(){
+					console.log('end')
+				})
+				
+				.start()
+
+		</script>
+	</body>
+
+</html>
