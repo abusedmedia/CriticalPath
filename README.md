@@ -1,7 +1,9 @@
 # CriticalPath
 
 A micro (~0.7Kb gzipped) javascript library to design precisely the resources loading pipeline. 
-In plain terms, you can define the order to load assets based on your design experience.
+In plain terms, you can define the order to load assets based on your design choices.
+
+Check out the effects on our [website](http://todo.to.it). Best viewed with low-band connection.
 
 
 ## Motivation
